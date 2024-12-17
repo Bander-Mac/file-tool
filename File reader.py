@@ -28,6 +28,12 @@ file_types = {
     "DOCUMENTS": ('.docx', '.pdf', '.txt', '.html')
 }
 
+Schedule = {
+    "Work": None,
+    "Coding": None,
+    "School": None
+}
+
 def file_type(file):
     if file.endswith(file_types["PICTURES"]):
         final_path = user_path + '/Pictures'
@@ -38,42 +44,16 @@ def file_type(file):
     else:
         return None
 
-def creation_time(file):
-    creation_time = os.path.getctime(file)
+def creation_time(file_dir):
+    creation_time = os.path.getctime(file_dir)
     creation_date = time.ctime(creation_time)
     return creation_date
-
-
-
-# while True:
-#
-#         if schedule["WORK"][0] < x.hour < schedule["WORK"][1] and x.strftime("%a") in schedule["DAY"]:
-#             print("On work schedule")
-#             # Moving files based on
-#             for entry in list_dirs:
-#                 print("checking" + entry)
-#                 destination = file_type(entry)
-#                 if destination:
-#                     print(destination)
-#                     entry_path = cwd + '/' + entry
-#                     os.chmod(entry_path, 0o666)
-#                     shutil.move(entry_path, destination)
-#                     print('Moved', entry, 'to', destination)
-#                 else:
-#                     print(entry + "Not sortable file type.")
-#
-#
-#         time.sleep(5)
 
 def process_date(string, index):
     # Indexes: 0 = day (week), 1 = month, 2 = day (month), 3 = time, 4 = year.
     parts = string.split()
     return parts[index]
 
-def time_files(directory, year, month, day, time=None):
-    if time is not None:
-        for entry in directory:
-            entry_year = process_date(entry, 4)
-            entry_month = process_date(entry, 2)
-            entry_day = process_date(entry, 3)
+
+
 
